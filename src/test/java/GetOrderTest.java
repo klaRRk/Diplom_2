@@ -1,4 +1,3 @@
-import methods.SpecRequest;
 import org.junit.*;
 import com.github.javafaker.Faker;
 import io.qameta.allure.junit4.DisplayName;

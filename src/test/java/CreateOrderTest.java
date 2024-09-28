@@ -1,4 +1,4 @@
-import methods.SpecRequest;
+import methods.*;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import io.qameta.allure.junit4.DisplayName;
@@ -6,7 +6,6 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import models.Order;
 import org.junit.runners.Parameterized;
-import methods.OrderRequest;
 import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;

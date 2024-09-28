@@ -1,4 +1,4 @@
-import methods.SpecRequest;
+import methods.*;
 import org.junit.*;
 import com.github.javafaker.Faker;
 import io.qameta.allure.junit4.DisplayName;
@@ -7,7 +7,6 @@ import io.restassured.response.Response;
 import models.User;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import methods.UserRequest;
 
 import static org.hamcrest.Matchers.equalTo;
 
