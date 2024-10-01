@@ -54,19 +54,30 @@ public class ChangeUserDataTest {
     }
 
     @Test
-    @DisplayName("Проверка изменения данных авторизованного пользователя")
-    public void updateUserDataTest() {
+    @DisplayName("Проверка получения данных пользователя до обновления")
+    public void getUserDataBeforeUpdateTest() {
         Response responseGetUser = userRequest.getUser(accessToken);
         responseGetUser.then().log().all().statusCode(200)
                 .body("success", equalTo(true))
                 .body("user.email", equalTo(oldEmail))
                 .body("user.name", equalTo(oldName));
+    }
 
+    @Test
+    @DisplayName("Проверка обновления данных пользователя")
+    public void updateUserDataTest() {
         Response responseUpdate = userRequest.updateUser(new User(newEmail, newPassword, newName), accessToken);
         responseUpdate.then().log().all().statusCode(200)
                 .body("success", equalTo(true))
                 .body("user.email", equalTo(newEmail))
                 .body("user.name", equalTo(newName));
+    }
+
+    @Test
+    @DisplayName("Проверка получения обновленных данных пользователя и входа с новыми данными")
+    public void getUserDataAfterUpdateAndLoginTest() {
+        // Обновляем данные пользователя
+        userRequest.updateUser(new User(newEmail, newPassword, newName), accessToken);
 
         Response responseGetUserAfterUpdate = userRequest.getUser(accessToken);
         responseGetUserAfterUpdate.then().log().all().statusCode(200)
